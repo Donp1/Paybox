@@ -1,0 +1,13 @@
+{
+  "name": "@bountydesk/db",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "migrate": "prisma migrate deploy",
+    "seed:demo": "tsx src/seed-demo.ts"
+  },
+  "dependencies": { "@prisma/client": "7.10.1", "@prisma/adapter-pg": "7.10.1", "pg": "8.23.1" },
+  "devDependencies": { "prisma": "7.10.1", "tsx": "4.23.15", "@types/pg": "8.23.1" }
+}

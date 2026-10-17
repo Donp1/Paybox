@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --canvas: #f7f8f5;
+  --surface: #ffffff;
+  --text: #172b35;
+  --muted: #52616b;
+  --border: #d9e2e2;
+  --primary: #006b67;
+  --primary-hover: #005853;
+  --primary-on: #ffffff;
+  --blocked: #a22d35;
+}
+
+body { background: var(--canvas); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }

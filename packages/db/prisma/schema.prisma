@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model BootstrapCheck {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now())
+}
+
+enum WorkspaceRole {
+  OWNER
+  CONTRIBUTOR
+}
+
+enum MembershipStatus {
+  ACTIVE
+  DEACTIVATED
+}
+
+model AppUser {
+  id                    String                @id @db.VarChar(255)
+  githubProviderUserId  String?               @unique @db.VarChar(255)
+  githubUsername        String?               @db.VarChar(255)
+  createdAt             DateTime              @default(now())
+  memberships           WorkspaceMembership[]
+}
+
+model Workspace {
+  id          String                @id @default(cuid())
+  name        String                @db.VarChar(100)
+  createdAt   DateTime              @default(now())
+  memberships WorkspaceMembership[]
+}
+
+model WorkspaceMembership {
+  id          String           @id @default(cuid())
+  workspaceId String
+  userId      String           @db.VarChar(255)
+  role        WorkspaceRole
+  status      MembershipStatus @default(ACTIVE)
+  createdAt   DateTime         @default(now())
+  workspace   Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user        AppUser          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+  @@index([userId, status])
+}

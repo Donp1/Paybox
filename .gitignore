@@ -1,0 +1,17 @@
+node_modules/
+.next/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+.corepack/
+.npm-cache/
+.pnpm-store/
+packages/db/generated/
+.sdk-inspect/
+.paybox-*.txt
+.fetch-paybox-docs.mjs
+paybox-sh-sdk-*.tgz

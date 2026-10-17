@@ -1,0 +1,9 @@
+{
+  "name": "@bountydesk/worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": { "dev": "tsx watch src/main.ts", "build": "tsc --noEmit -p tsconfig.build.json", "start": "node --experimental-strip-types src/main.ts" },
+  "dependencies": { "@bountydesk/contracts": "workspace:*", "pg": "8.23.1", "pg-boss": "12.38.0" },
+  "devDependencies": { "@types/pg": "8.23.1", "tsx": "4.23.15" }
+}
